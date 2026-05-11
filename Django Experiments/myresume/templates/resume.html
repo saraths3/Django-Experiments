@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ resume.name }} | Resume</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.5; color: #333; max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        header { text-align: center; border-bottom: 2px solid #2c3e50; padding-bottom: 10px; }
+        h1 { margin-bottom: 5px; color: #2c3e50; }
+        .contact { font-style: italic; color: #7f8c8d; }
+        section { margin-top: 25px; }
+        h2 { border-left: 5px solid #2c3e50; padding-left: 10px; background: #f4f7f6; }
+        .project-item { margin-bottom: 15px; }
+        .skills-list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; }
+        .skills-list li { background: #2c3e50; color: white; padding: 5px 12px; border-radius: 4px; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>{{ resume.name }}</h1>
+    <p class="contact">{{ resume.title }} | {{ resume.location }}</p>
+    <p>{{ resume.email }} | <a href="{{ resume.links.github }}">GitHub</a></p>
+</header>
+
+<section>
+    <h2>About Me</h2>
+    <p>{{ resume.summary }}</p>
+</section>
+
+<section>
+    <h2>Skills</h2>
+    <ul class="skills-list">
+        {% for skill in resume.skills %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section>
+    <h2>Key Projects</h2>
+    {% for project in resume.projects %}
+        <div class="project-item">
+            <strong>{{ project.title }}</strong><br>
+            {{ project.desc }}<br>
+            <small><a href="{{ project.link }}">Source Code</a></small>
+        </div>
+    {% endfor %}
+</section>
+
+<section>
+    <h2>Education</h2>
+    <p><strong>{{ resume.education.degree }}</strong><br>
+    {{ resume.education.univ }} ({{ resume.education.years }})</p>
+</section>
+
+</body>
+</html>
