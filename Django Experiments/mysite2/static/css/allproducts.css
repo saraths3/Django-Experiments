@@ -1,0 +1,7 @@
+h1, p{
+    color: aliceblue;
+    font-weight: bolder;
+    border: 5px solid rgb(255, 255, 255);
+    border-radius: 100px;
+    
+}
