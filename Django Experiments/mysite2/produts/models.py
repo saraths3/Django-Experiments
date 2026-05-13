@@ -12,7 +12,16 @@ class MyStudents(models.Model):
     roll = models.IntegerField()
     address = models.TextField() 
     bio = models.TextField(default='Student of University of Kerala')
-
+    cource_section = (
+        ('BSc','Bsc'),
+        ('BBA', 'BBA'),
+        ('BCA', 'BCA')
+    )
+    cource = models.CharField(max_length=30, null=True, choices=cource_section)
+    dob = models.DateField(null=True)
+    tob = models.TimeField(null=True)
+    toa = models.DateTimeField(null=True)
+    
 class Teachers(models.Model):
     name = models.CharField(max_length = 100)
     phone = models.IntegerField()
@@ -20,14 +29,14 @@ class Teachers(models.Model):
 
 class Employee(models.Model):
     name = models.CharField(max_length=30)
-    age = models.IntegerField()
+    age = models.IntegerField(blank=True)
     discription = models.TextField()
-    salary = models.IntegerField()
-
+    salary = models.IntegerField(blank=True, null=True)
+    dummydata = models.CharField(null= True)
 
 class userdata(models.Model):
     name = models.CharField(max_length=30)
     age = models.IntegerField()
-    address = models.TextField()
+    address = models.TextField(max_length=100, blank=True)
     email = models.EmailField()
-    
+    fresher = models.BooleanField(default=True)
