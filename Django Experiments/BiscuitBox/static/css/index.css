@@ -1,0 +1,63 @@
+/* Base Styles & Custom Font Override */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-image: url(https://images.unsplash.com/photo-1665355986953-1478c50c2a7d?q=80&w=1392&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    color: #212529;
+    background-position: center;
+    background-size: cover;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Navbar Customizations */
+.navbar {
+    padding: 0.85rem 0;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+    background-color: #ffffff50;
+}
+
+.bg-blur{
+    backdrop-filter: blur(10px);
+    background-color: #ffffff50;
+}
+
+.navbar-brand {
+    font-size: 1.35rem;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Hero Box Layout */
+.hero-box {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.149) !important;
+}
+
+/* Custom Button Styling */
+.btn-primary {
+    background-color: #4f46e5;
+    border-color: #4f46e5;
+    font-weight: 500;
+    padding: 0.6rem 1.5rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #4338ca;
+    border-color: #4338ca;
+    transform: translateY(-1px);
+}
+
+/* Sticky Footer styling tweak */
+footer {
+    background-color: #ffffff50;
+    backdrop-filter: blur(10px);
+}
