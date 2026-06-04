@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Cart</title>
+
+    <link rel="stylesheet" href="{% static 'css/products_page.css' %}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span>Easy Cart</span>
+    </div>
+
+    <div class="nav-right">
+
+        <div class="profile">
+            <i class="fa-solid fa-user"></i>
+            <span>{{ request.user.username }}</span>
+        </div>
+        <a href="{% url 'cart_page' %}">
+        <button class="icon-btn">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+    </a>
+        <a href="{% url 'logout' %}">
+        <button class="logout-btn" >
+            Logout
+        </button>
+    </a>
+
+    </div>
+
+</header>
+
+<section class="products-wrapper">
+
+    {% for product in products %}
+
+    <article class="product-card">
+
+        {% if product.image %}
+            <img
+                src="{{ product.images.url }}"
+                alt="{{ product.name }}"
+                class="product-image">
+        {% else %}
+            <img
+                src="{{ product.images.url }}"
+                alt="No Image"
+                class="product-image">
+        {% endif %}
+
+        <div class="product-content">
+
+            <span class="category">
+                {{ product.catagory }}
+            </span>
+
+            <h2 class="product-title">
+                {{ product.name }}
+            </h2>
+
+            <p class="description">
+                {{ product.description|truncatechars:120 }}
+            </p>
+
+            <div class="bottom">
+
+                <span class="price">
+                    ₹{{ product.price }}
+                </span>
+                <form action="{% url 'add_cart' product.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" class="add-cart-btn">
+                        Add to Cart
+                    </button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </article>
+
+    {% empty %}
+
+    <div class="empty-products">
+        <h2>No Products Available</h2>
+    </div>
+
+    {% endfor %}
+
+</section>
+
+</body>
+</html>

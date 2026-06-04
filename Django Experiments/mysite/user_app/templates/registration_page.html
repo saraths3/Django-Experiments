@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="{% static 'css/registration_page.css'%} ">
+</head>
+<body>
+
+    <div class="auth-box">
+        <h1>Create account</h1>
+        <p>Join us and get started</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="Username" required name="username">
+            <input type="email" placeholder="Email address" required name="email">
+            <input type="password" placeholder="Password" required name="password1">
+            <input type="password" placeholder="Confirm password" required name="password2">
+            <button type="submit">Create account</button>
+        </form>
+
+        <div class="footer-text">
+            Already have an account?
+            <a href="{% url 'login_page' %}">Sign in</a>
+            <br>
+                <b>
+            {% if error %}
+                {{ error }}
+            {% endif %}
+                </b>
+        </div>
+    </div>
+
+</body>
+</html>
